@@ -1,6 +1,12 @@
-// Placeholder JS for the hospital website.
-// Discovery & Planning phase (Week 1) — no dynamic features built yet.
+// Main JS for the Balasooriya Pvt Hospital website.
 
 document.addEventListener('DOMContentLoaded', () => {
-  console.log('Hospital website scaffold loaded — Week 1 discovery & planning stage.');
+  const form = document.getElementById('contact-form');
+  if (form) {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      alert('Thank you for reaching out. This form is not yet connected to a backend — a real submission system will be added later.');
+      form.reset();
+    });
+  }
 });
