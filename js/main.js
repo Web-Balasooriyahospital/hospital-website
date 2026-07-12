@@ -1,5 +1,4 @@
 // Main JS for the Balasooriya Pvt Hospital website.
-// Day 1 (Fri) 1:45-4:00 PM - Core build block 3: contact form handling.
 
 document.addEventListener('DOMContentLoaded', () => {
   const form = document.getElementById('contact-form');
