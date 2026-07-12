@@ -20,8 +20,11 @@ Static multi-page site with placeholder content (doctor names, address, phone, e
 ready to be swapped for real hospital details. Contact form is front-end only — no
 backend/email integration yet.
 
+## Deployment
+Live staging site: https://web-balasooriyahospital.github.io/hospital-website/
+(GitHub Pages, deployed from `master`, root folder)
+
 ## Next Steps
 - Replace placeholder content (doctors, address, phone, services) with real details
 - Connect the contact form to a backend or email service
 - Design the appointment booking flow
-- Decide hosting/deployment approach
