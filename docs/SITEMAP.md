@@ -35,16 +35,26 @@ build-out continues in Week 2's remaining days.
 - Current openings (placeholder until HR provides real postings).
 - General "how to apply" info and contact point.
 
-## Content Still Needed From the Hospital (blocker, carried from Week 1)
-- Confirmed department list and descriptions.
-- Real doctor names, photos, and specialties (Doctors page currently has
-  placeholders).
-- Address, phone numbers, and accepted insurance providers.
-- Any existing news/events or upcoming postings for the Careers page.
+## Content Still Needed From the Hospital (update: mostly resolved)
+Real content was sourced from the hospital's live site, balasooriyahospital.lk,
+and pulled into the site on Jul 26, 2026:
+- [x] Confirmed department/service list and descriptions — see `departments.html`.
+- [x] Real doctor names and specialties (28 consultants) — see `doctors.html`.
+  Photos are still placeholder initials pending real photos.
+- [x] Address, phone numbers, email, fax, hours — see `contact.html`.
+- [x] Real logo and hero/ward photos — see `images/`.
+- [x] Careers openings and HR contact — see `careers.html`.
+- [ ] Accepted insurance providers — still unknown. Confirmed the live site
+  doesn't publish this either, so it's a genuine open question for billing
+  staff, not just a missing placeholder.
+- [ ] Dated news/events — live site has no dated posts either (only a general
+  announcement banner). `news.html` currently shows award history instead.
 
 ## Next Steps (remainder of Week 2)
 - Build out `departments.html`, `insurance.html`, `news.html`, and
   `careers.html` as placeholder pages with the structure above, ready to
-  receive real content.
-- Add the new pages to site navigation across all pages.
-- Continue Hospital Inventory System groundwork (Week 2 checklist item).
+  receive real content. — Done.
+- Add the new pages to site navigation across all pages. — Done.
+- Continue Hospital Inventory System groundwork (Week 2 checklist item). — Done.
+- Ask hospital billing/admin directly for accepted insurance providers, since
+  the live site doesn't list them.
