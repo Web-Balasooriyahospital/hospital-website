@@ -25,6 +25,24 @@ body {
 .site-header .logo {
   font-weight: bold;
   font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.logo-img {
+  height: 32px;
+  width: auto;
+  background: #fff;
+  border-radius: 4px;
+  padding: 2px 4px;
+}
+
+.about-photo,
+.gallery-photo {
+  max-width: 100%;
+  border-radius: 6px;
+  margin-top: 1rem;
 }
 
 .site-header nav a {
@@ -100,6 +118,14 @@ body {
 .section h2 {
   color: #0b5ea8;
   margin-bottom: 1rem;
+}
+
+.section ul {
+  margin-left: 1.5rem;
+}
+
+.section li {
+  margin-bottom: 0.4rem;
 }
 
 .cards {
