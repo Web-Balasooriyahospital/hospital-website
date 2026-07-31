@@ -1,3 +1,15 @@
+:root {
+  --color-primary: #0b5ea8;
+  --color-primary-dark: #094a86;
+  --color-text: #1f2933;
+  --color-hero-bg: #e8f2fb;
+  --color-card-bg: #f8f9fa;
+  --color-card-border: #e1e4e8;
+  --color-input-border: #ccd1d5;
+  --color-footer-bg: #1f2933;
+  --color-white: #fff;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -6,7 +18,7 @@
 }
 
 body {
-  color: #1f2933;
+  color: var(--color-text);
   line-height: 1.6;
 }
 
@@ -15,8 +27,8 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 0.5rem 2rem;
-  background: #0b5ea8;
-  color: #fff;
+  background: var(--color-primary);
+  color: var(--color-white);
   position: sticky;
   top: 0;
   z-index: 10;
@@ -33,7 +45,7 @@ body {
 .logo-img {
   height: 68px;
   width: auto;
-  background: #fff;
+  background: var(--color-white);
   border-radius: 4px;
   padding: 3px 5px;
 }
@@ -46,7 +58,7 @@ body {
 }
 
 .site-header nav a {
-  color: #fff;
+  color: var(--color-white);
   text-decoration: none;
   margin-left: 1.5rem;
 }
@@ -76,7 +88,7 @@ body {
 }
 
 .hero {
-  background: #e8f2fb;
+  background: var(--color-hero-bg);
   padding: 4rem 2rem;
   text-align: center;
 }
@@ -84,14 +96,14 @@ body {
 .hero h1 {
   font-size: 2.2rem;
   margin-bottom: 1rem;
-  color: #0b5ea8;
+  color: var(--color-primary);
 }
 
 .cta {
   margin-top: 1.5rem;
   padding: 0.75rem 1.5rem;
-  background: #0b5ea8;
-  color: #fff;
+  background: var(--color-primary);
+  color: var(--color-white);
   border: none;
   border-radius: 4px;
   cursor: pointer;
@@ -99,12 +111,12 @@ body {
 }
 
 .cta:hover {
-  background: #094a86;
+  background: var(--color-primary-dark);
 }
 
 .page-banner {
-  background: #0b5ea8;
-  color: #fff;
+  background: var(--color-primary);
+  color: var(--color-white);
   padding: 2.5rem 2rem;
   text-align: center;
 }
@@ -116,7 +128,7 @@ body {
 }
 
 .section h2 {
-  color: #0b5ea8;
+  color: var(--color-primary);
   margin-bottom: 1rem;
 }
 
@@ -136,14 +148,14 @@ body {
 }
 
 .card {
-  background: #f8f9fa;
-  border: 1px solid #e1e4e8;
+  background: var(--color-card-bg);
+  border: 1px solid var(--color-card-border);
   border-radius: 6px;
   padding: 1.5rem;
 }
 
 .card h3 {
-  color: #0b5ea8;
+  color: var(--color-primary);
   margin-bottom: 0.5rem;
 }
 
@@ -155,8 +167,8 @@ body {
   width: 90px;
   height: 90px;
   border-radius: 50%;
-  background: #0b5ea8;
-  color: #fff;
+  background: var(--color-primary);
+  color: var(--color-white);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -183,7 +195,7 @@ form.contact-form input,
 form.contact-form textarea {
   width: 100%;
   padding: 0.6rem;
-  border: 1px solid #ccd1d5;
+  border: 1px solid var(--color-input-border);
   border-radius: 4px;
   font-size: 1rem;
 }
@@ -199,7 +211,7 @@ form.contact-form textarea {
 .site-footer {
   text-align: center;
   padding: 1.5rem;
-  background: #1f2933;
-  color: #fff;
+  background: var(--color-footer-bg);
+  color: var(--color-white);
   font-size: 0.85rem;
 }
