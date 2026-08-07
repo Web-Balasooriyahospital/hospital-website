@@ -34,6 +34,14 @@ cleanly to the two page types still to be built.
 - **Multi-language infrastructure** (Week 19) should reuse this same
   design system and sitemap, not a parallel structure.
 
+## Cross-Device QA (performed as part of sign-off)
+- Verified nav doesn't overflow at tablet width (768px) — wraps cleanly via
+  normal inline flow, no horizontal scroll.
+- Confirmed the inline-link color inconsistency found and fixed on Jul 31
+  (`departments.html`, `insurance.html`, `contact.html` links were
+  rendering in the browser default blue instead of the theme color) is the
+  only visual defect found across all 9 pages.
+
 ## Sign-Off
 Design phase (Weeks 2–5) is complete and approved. Week 6 begins
 build-phase work per the worksheet: Environment Setup.
