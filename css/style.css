@@ -244,7 +244,11 @@ form.contact-form textarea {
   position: fixed;
   inset: 0;
   z-index: 1000;
-  background: rgba(15, 25, 35, 0.92);
+  /* Translucent so the site stays visible behind the intro; the light blur
+     keeps page text from competing with the video. */
+  background: rgba(15, 25, 35, 0.3);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -315,7 +319,8 @@ form.contact-form textarea {
 .intro-timer {
   color: var(--color-white);
   font-size: 0.85rem;
-  opacity: 0.85;
+  /* Shadow keeps the countdown readable against the see-through backdrop. */
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
 }
 
 @media (max-width: 600px) {
