@@ -238,3 +238,99 @@ form.contact-form textarea {
   color: var(--color-white);
   font-size: 0.85rem;
 }
+
+/* ---- Intro video popup ---- */
+.intro-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(15, 25, 35, 0.92);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  animation: intro-fade-in 0.3s ease;
+}
+
+.intro-overlay[hidden] {
+  display: none;
+}
+
+.intro-overlay.is-closing {
+  animation: intro-fade-out 0.35s ease forwards;
+}
+
+@keyframes intro-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes intro-fade-out {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+
+.intro-box {
+  width: min(900px, 100%);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.intro-video {
+  width: 100%;
+  max-height: 75vh;
+  border-radius: 8px;
+  background: #000;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+}
+
+.intro-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.intro-btn {
+  background: var(--color-white);
+  color: var(--color-primary);
+  border: none;
+  border-radius: 4px;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.intro-btn:hover {
+  background: var(--color-hero-bg);
+}
+
+.intro-btn:focus-visible {
+  outline: 2px solid var(--color-white);
+  outline-offset: 2px;
+}
+
+.intro-timer {
+  color: var(--color-white);
+  font-size: 0.85rem;
+  opacity: 0.85;
+}
+
+@media (max-width: 600px) {
+  .intro-overlay {
+    padding: 1rem;
+  }
+
+  .intro-controls {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .intro-timer {
+    order: -1;
+    width: 100%;
+    text-align: center;
+  }
+}

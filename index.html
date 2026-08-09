@@ -9,6 +9,20 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+  <!-- Intro video popup: plays once per visit, closes automatically after 10s -->
+  <div class="intro-overlay" id="intro-overlay" role="dialog" aria-modal="true"
+       aria-label="Welcome to Balasooriya Hospital" hidden>
+    <div class="intro-box">
+      <video id="intro-video" class="intro-video" src="videos/intro.mp4"
+             autoplay muted playsinline preload="auto"></video>
+      <div class="intro-controls">
+        <button type="button" id="intro-sound" class="intro-btn" aria-label="Unmute video">🔇 Sound</button>
+        <span class="intro-timer" id="intro-timer" aria-live="off">Closing in 10s</span>
+        <button type="button" id="intro-close" class="intro-btn" aria-label="Close intro video">✕ Skip</button>
+      </div>
+    </div>
+  </div>
+
   <header class="site-header">
     <div class="logo"><img src="images/logo.jpg" alt="Balasooriya Hospital" class="logo-img"> Balasooriya Pvt Hospital</div>
     <nav>
