@@ -50,12 +50,14 @@ function initIntroVideo() {
     closed = true;
     clearInterval(countdownId);
     video.pause();
+    // Fade the full-screen intro out to reveal the site; must match the
+    // 0.6s .is-closing animation in the stylesheet.
     overlay.classList.add('is-closing');
     setTimeout(() => {
       overlay.hidden = true;
       overlay.classList.remove('is-closing');
       document.body.style.overflow = '';
-    }, 350);
+    }, 600);
     document.removeEventListener('keydown', onKeydown);
   }
 
