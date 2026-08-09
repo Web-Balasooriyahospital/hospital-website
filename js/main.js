@@ -11,7 +11,45 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   initIntroVideo();
+  initMobileNav();
 });
+
+// Mobile menu: the nav is collapsed behind a button under 700px so the
+// header doesn't take a quarter of a phone screen.
+function initMobileNav() {
+  const toggle = document.getElementById('nav-toggle');
+  const nav = document.getElementById('site-nav');
+  if (!toggle || !nav) return;
+
+  function setOpen(open) {
+    nav.classList.toggle('is-open', open);
+    toggle.setAttribute('aria-expanded', String(open));
+    toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    toggle.textContent = open ? '✕' : '☰';
+  }
+
+  toggle.addEventListener('click', () => {
+    setOpen(!nav.classList.contains('is-open'));
+  });
+
+  // Tapping a link navigates away; close first so returning via back button
+  // doesn't show a stuck-open menu.
+  nav.addEventListener('click', (e) => {
+    if (e.target.tagName === 'A') setOpen(false);
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && nav.classList.contains('is-open')) {
+      setOpen(false);
+      toggle.focus();
+    }
+  });
+
+  // If the viewport grows past the breakpoint, drop the mobile-only state.
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 700 && nav.classList.contains('is-open')) setOpen(false);
+  });
+}
 
 // Intro video popup: shows once per browsing session on the home page and
 // closes itself after 10 seconds. Autoplay starts muted because browsers

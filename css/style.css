@@ -84,23 +84,16 @@ button:focus-visible,
   outline-offset: 2px;
 }
 
-@media (max-width: 600px) {
-  .site-header {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 1rem 1.25rem;
-  }
-
-  .site-header nav {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem 1rem;
-    margin-top: 0.75rem;
-  }
-
-  .site-header nav a {
-    margin-left: 0;
-  }
+/* Menu button is desktop-hidden; the nav shows inline there. */
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--color-white);
+  font-size: 1.6rem;
+  line-height: 1;
+  padding: 0.35rem 0.5rem;
+  cursor: pointer;
 }
 
 .hero {
@@ -327,7 +320,16 @@ form.contact-form textarea {
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
 }
 
-@media (max-width: 600px) {
+/* The clip is landscape (1280x720). On a portrait phone, cover would crop
+   about 74% of the frame width away, so show the whole frame instead and
+   letterbox it against the black backing. */
+@media (orientation: portrait) {
+  .intro-video {
+    object-fit: contain;
+  }
+}
+
+@media (max-width: 700px) {
   .intro-controls {
     bottom: 1.25rem;
     gap: 0.6rem;
@@ -336,11 +338,81 @@ form.contact-form textarea {
   }
 
   .intro-btn {
-    padding: 0.45rem 0.7rem;
+    padding: 0.5rem 0.75rem;
     font-size: 0.8rem;
   }
 
   .intro-timer {
     font-size: 0.78rem;
+  }
+}
+
+@media (max-width: 700px) {
+  .site-header {
+    flex-wrap: wrap;
+    padding: 0.5rem 1rem;
+  }
+
+  .nav-toggle {
+    display: block;
+  }
+
+  /* Collapse the 9 links behind the menu button so the header stops eating
+     a quarter of a phone screen. */
+  .site-header nav {
+    display: none;
+    flex-basis: 100%;
+    flex-direction: column;
+    margin-top: 0.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.25);
+  }
+
+  .site-header nav.is-open {
+    display: flex;
+  }
+
+  .site-header nav a {
+    margin-left: 0;
+    padding: 0.7rem 0.25rem;   /* ~44px tap target */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  .site-header nav a:last-child {
+    border-bottom: none;
+  }
+
+  /* The logo image already carries the hospital wordmark, so the duplicate
+     text just costs width on a phone. */
+  .logo-text {
+    display: none;
+  }
+
+  .logo-img {
+    height: 44px;
+  }
+
+  .hero {
+    padding: 2.5rem 1.25rem;
+  }
+
+  .hero h1 {
+    font-size: 1.6rem;
+  }
+
+  .section {
+    padding: 2rem 1.25rem;
+  }
+
+  .page-banner {
+    padding: 1.75rem 1.25rem;
+  }
+
+  .page-banner h1 {
+    font-size: 1.5rem;
+  }
+
+  .cards {
+    grid-template-columns: 1fr;
+    gap: 1rem;
   }
 }
