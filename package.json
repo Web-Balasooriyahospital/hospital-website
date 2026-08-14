@@ -1,0 +1,20 @@
+{
+  "name": "hospital-website",
+  "version": "1.0.0",
+  "description": "Balasooriya Pvt Hospital — public website",
+  "private": true,
+  "scripts": {
+    "dev": "npx --yes serve . --listen 8000",
+    "lint:html": "npx --yes html-validate \"*.html\"",
+    "lint:css": "npx --yes stylelint \"css/**/*.css\"",
+    "lint": "npm run lint:html && npm run lint:css"
+  },
+  "stylelint": {
+    "extends": "stylelint-config-standard"
+  },
+  "browserslist": [
+    "> 0.5%",
+    "last 2 versions",
+    "not dead"
+  ]
+}
