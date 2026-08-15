@@ -67,10 +67,20 @@ first run and cached after that.
 
 ## Deployment
 
-The site deploys to GitHub Pages from `master` automatically — see
-`.github/workflows/deploy.yml`. Pushing to `master` publishes to:
+The site publishes to GitHub Pages from `master`:
 
 <https://web-balasooriyahospital.github.io/hospital-website/>
+
+`.github/workflows/deploy.yml` builds and publishes on every push to
+`master`, and can also be run manually from the Actions tab.
+
+> **One-time setting required.** The repository is currently on the older
+> "Deploy from a branch" Pages source. The workflow needs
+> **Settings → Pages → Build and deployment → Source = GitHub Actions**.
+> Until that is switched, the workflow run will fail — the site itself keeps
+> publishing from the branch, so nothing goes down, but the Actions run shows
+> red. Switch the setting, or delete the workflow if the branch deploy is
+> preferred.
 
 There is no separate staging environment yet. Until there is, use a local
 server for review and only push changes you are happy to have live.
