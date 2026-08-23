@@ -47,30 +47,63 @@ priority rather than held for the weekly slot.
 
 ### Troubleshooting performed
 
+Handled remotely over Quick Assist while the supervisor was at the counter.
+
 1. Confirmed the sale itself completed and an invoice number was issued —
-   this ruled out the POS application and the database.
-2. Checked the printer was powered on, online, and had paper and cables
-   seated.
-3. Checked the Windows print queue and found jobs spooled but not printing.
-4. Cleared the stuck queue and restarted the print spooler service.
-5. Reinstalled the printer driver, which had been reset by a recent Windows
-   update.
-6. Printed a test receipt, then had counter staff complete a live sale to
-   confirm the fix end to end before closing the ticket.
+   this ruled out the POS application and the database, isolating the fault
+   to print output.
+2. Checked the printer state: green light on, paper loaded, roll already
+   changed by staff.
+3. Found the paper roll loaded upside down. Thermal paper only prints on one
+   side, so a reversed roll feeds blank. Reseated it — receipts then printed,
+   but cut off halfway.
+4. Connected via Quick Assist and found the printer set to A4 instead of
+   80mm. Someone had changed it in Control Panel. Corrected it; the test
+   print then came out full length.
+5. Staff also reported the reprint button doing nothing. It was calling an
+   old endpoint after the previous week's update. Patched it and restarted
+   the service.
+6. Had counter staff run a live sale to confirm both a full receipt and the
+   reprint before closing the ticket.
 
 ### Root cause
 
-A Windows update reset the printer configuration, leaving the driver in a
-broken state. The POS kept accepting sales and queueing print jobs, so the
-fault was invisible until someone looked for a physical receipt.
+Three separate faults stacked on one counter: a reversed paper roll, a
+printer paper-size setting changed from Control Panel, and a reprint button
+left pointing at an old endpoint by the previous update.
 
 ### Follow-up
 
-This is the second printer fault traced to a Windows update resetting printer
-settings — the reception Canon G2010 failed the same way on 27 June. Worth
-handling properly rather than fixing repeatedly:
+- Staff to be told not to change printer settings from Control Panel. Those
+  permissions should be locked down so it cannot happen again.
+- Staff also to be told that when a receipt fails the invoice is still saved
+  — they should reprint rather than re-entering the sale, which risks
+  double-charging a patient.
+- Printer test print added to the weekly maintenance checklist so a
+  misconfigured counter is caught at the slot rather than by a patient
+  waiting.
 
-- Add a printer test print to the routine maintenance checklist so the fault
-  is caught at the weekly slot instead of by a patient waiting at a counter.
-- Consider deferring feature updates on the counter machines so printer
-  configuration is not reset without warning.
+## Ticket #002 — LAB computer turning off by itself
+
+| | |
+|---|---|
+| **Date** | 23/08/2026 |
+| **Reported by** | Hospital Supervisor |
+| **Location** | LAB |
+| **Time reported** | 8:44 AM |
+| **Time resolved** | 9:58 AM |
+| **Time to resolve** | 1 hour 14 minutes |
+| **Priority** | Medium |
+| **Status** | Resolved |
+
+### Issue reported
+
+The lab computer was shutting down on its own — sometimes after a few
+minutes of use, sometimes after a few hours. There was no fixed pattern and
+no warning, which pointed away from a software fault and towards a thermal or
+power problem.
+
+### Follow-up
+
+Worth checking the other machines of the same age for dust build-up before
+they fail the same way.
