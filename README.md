@@ -52,6 +52,7 @@ and gives the reception number instead of showing a false confirmation.
 
 | Document | Contents |
 |---|---|
+| [`docs/PROJECT_STATUS.md`](docs/PROJECT_STATUS.md) | Status of all three systems and where it differs from the plan |
 | [`docs/DEV_SETUP.md`](docs/DEV_SETUP.md) | Running the site locally, linting, deployment |
 | [`docs/SITEMAP.md`](docs/SITEMAP.md) | Full sitemap and per-page content plan |
 | [`docs/WIREFRAMES.md`](docs/WIREFRAMES.md) | Layout wireframes for every page template |
