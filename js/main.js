@@ -126,7 +126,6 @@ function initIntroVideo() {
 
   const video = document.getElementById('intro-video');
   const soundBtn = document.getElementById('intro-sound');
-  const closeBtn = document.getElementById('intro-close');
   const timerLabel = document.getElementById('intro-timer');
   const DURATION = 10;
 
@@ -181,9 +180,14 @@ function initIntroVideo() {
     soundBtn.setAttribute('aria-label', video.muted ? 'Unmute video' : 'Mute video');
   });
 
-  closeBtn.addEventListener('click', close);
-  overlay.addEventListener('click', (e) => {
-    if (e.target === overlay) close();
-  });
+  // No skip button and no click-to-dismiss — the intro is meant to play
+  // through. Escape still works: it is not a visible way out, so it does not
+  // undermine that, but it means a visitor is never trapped behind a
+  // full-screen overlay.
   document.addEventListener('keydown', onKeydown);
+
+  // Failsafe. If the video cannot load — a bad file, a blocked request, a
+  // slow connection — the overlay would otherwise cover the whole site with
+  // nothing playing and no way past it. Close immediately instead.
+  video.addEventListener('error', close);
 }
