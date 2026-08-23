@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Department profile at Balasooriya Hospital, Puttalam — services offered and the consultants who work there.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏥</text></svg>">
+  <title>Department — Balasooriya Pvt Hospital</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="emergency-bar">
+    <span><strong>Open 24 hours, 365 days</strong></span>
+    <span>Emergency (ETU): <a href="tel:+94322265200">032-226-5200</a></span>
+    <span>Ambulance: <a href="tel:+94322266266">032-226-6266</a></span>
+  </div>
+
+  <header class="site-header">
+    <div class="logo"><img src="images/logo.jpg" alt="Balasooriya Hospital" class="logo-img"><span class="logo-text">Balasooriya Pvt Hospital</span></div>
+    <button type="button" class="nav-toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav">☰</button>
+    <nav id="site-nav">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="doctors.html">Doctors</a>
+      <a href="departments.html" class="active">Departments</a>
+      <a href="insurance.html">Insurance</a>
+      <a href="news.html">News</a>
+      <a href="careers.html">Careers</a>
+      <a href="booking.html">Booking</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <div class="page-banner">
+    <h1 id="department-name">Department</h1>
+  </div>
+
+  <section class="section" id="department-profile" hidden>
+    <p class="breadcrumb"><a href="departments.html">← All departments</a></p>
+    <p id="department-urgent" class="urgent-note" hidden>
+      <strong>This is an emergency service.</strong> If you need urgent help,
+      call the ETU on <a href="tel:+94322265200">032-226-5200</a> or the
+      ambulance line on <a href="tel:+94322266266">032-226-6266</a> instead of
+      booking an appointment.
+    </p>
+    <p id="department-description"></p>
+    <p class="profile-actions">
+      <a href="booking.html"><button class="cta">Request an Appointment</button></a>
+    </p>
+  </section>
+
+  <section class="section" id="department-doctors-section" hidden>
+    <h2>Doctors in this Department</h2>
+    <div class="cards" id="department-doctors"></div>
+  </section>
+
+  <section class="section" id="department-location" hidden>
+    <h2>Where to Find Us</h2>
+    <p>118/A Kurunegala Road, Puttalam, Sri Lanka. Floor and room details for
+      individual departments have not yet been provided by the hospital.</p>
+    <p><a href="contact.html">Full contact details and directions →</a></p>
+  </section>
+
+  <section class="section" id="department-missing" hidden>
+    <h2>Department not found</h2>
+    <p>We couldn't find that department. The link may be out of date.</p>
+    <p><a href="departments.html">← Back to all departments</a></p>
+  </section>
+
+  <footer class="site-footer">
+    <p>&copy; 2026 Balasooriya Pvt Hospital. All rights reserved.</p>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/profile.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

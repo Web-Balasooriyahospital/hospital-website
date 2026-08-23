@@ -362,6 +362,107 @@ form.contact-form textarea {
   font-size: 0.85rem;
 }
 
+/* ---- Profile pages (doctor / department) ---- */
+.breadcrumb {
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}
+
+.profile-head {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  align-items: flex-start;
+}
+
+.profile-photo {
+  width: 120px;
+  height: 120px;
+  font-size: 2rem;
+  margin: 0;
+  flex-shrink: 0;
+}
+
+.profile-meta {
+  flex: 1 1 260px;
+}
+
+.profile-meta h2 {
+  color: var(--color-primary);
+  margin-bottom: 0.25rem;
+}
+
+.profile-specialty {
+  font-size: 1.05rem;
+  margin-bottom: 0.75rem;
+}
+
+.profile-actions {
+  margin-top: 1rem;
+}
+
+.profile-actions .cta {
+  margin-top: 0;
+}
+
+/* Used where an emergency service must not be booked through a form. */
+.urgent-note {
+  border-left: 4px solid var(--color-emergency);
+  background: #fdecea;
+  padding: 0.85rem 1rem;
+  border-radius: 4px;
+  margin-bottom: 1.25rem;
+}
+
+/* ---- Forms ---- */
+.label-optional {
+  font-weight: normal;
+  color: #6b7280;
+}
+
+form.contact-form select {
+  width: 100%;
+  padding: 0.6rem;
+  border: 1px solid var(--color-input-border);
+  border-radius: 4px;
+  font-size: 1rem;
+  background: var(--color-white);
+}
+
+.form-status {
+  margin-top: 0.5rem;
+  padding: 0.75rem 1rem;
+  border-radius: 4px;
+  display: none;
+}
+
+.form-status.is-error,
+.form-status.is-warning,
+.form-status.is-success {
+  display: block;
+}
+
+.form-status.is-error {
+  background: #fdecea;
+  border-left: 4px solid var(--color-emergency);
+}
+
+.form-status.is-warning {
+  background: #fff8e1;
+  border-left: 4px solid #b7791f;
+}
+
+.form-status.is-success {
+  background: #e8f5e9;
+  border-left: 4px solid #2e7d32;
+}
+
+.form-note {
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
+  color: #4b5563;
+}
+
 /* ---- Intro video popup ---- */
 .intro-overlay {
   position: fixed;

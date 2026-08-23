@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Specialist profile at Balasooriya Hospital, Puttalam — specialty, department, and consultation hours.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏥</text></svg>">
+  <title>Doctor Profile — Balasooriya Pvt Hospital</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="emergency-bar">
+    <span><strong>Open 24 hours, 365 days</strong></span>
+    <span>Emergency (ETU): <a href="tel:+94322265200">032-226-5200</a></span>
+    <span>Ambulance: <a href="tel:+94322266266">032-226-6266</a></span>
+  </div>
+
+  <header class="site-header">
+    <div class="logo"><img src="images/logo.jpg" alt="Balasooriya Hospital" class="logo-img"><span class="logo-text">Balasooriya Pvt Hospital</span></div>
+    <button type="button" class="nav-toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav">☰</button>
+    <nav id="site-nav">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="doctors.html" class="active">Doctors</a>
+      <a href="departments.html">Departments</a>
+      <a href="insurance.html">Insurance</a>
+      <a href="news.html">News</a>
+      <a href="careers.html">Careers</a>
+      <a href="booking.html">Booking</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <div class="page-banner">
+    <h1 id="doctor-name">Doctor Profile</h1>
+  </div>
+
+  <section class="section" id="doctor-profile" hidden>
+    <p class="breadcrumb"><a href="doctors.html">← All doctors</a></p>
+
+    <div class="profile-head">
+      <div class="doctor-photo profile-photo" id="doctor-initials" aria-hidden="true">DR</div>
+      <div class="profile-meta">
+        <h2 id="doctor-heading"></h2>
+        <p class="profile-specialty" id="doctor-specialty"></p>
+        <p><strong>Department:</strong> <a id="doctor-department-link" href="#"></a></p>
+        <p><strong>Consultation hours:</strong> <span id="doctor-hours"></span></p>
+        <p class="profile-actions">
+          <a href="booking.html"><button class="cta">Request an Appointment</button></a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="doctor-bio" hidden>
+    <h2>Qualifications &amp; Background</h2>
+    <p>Full biography and qualifications for this consultant have not yet been
+      provided by the hospital. Once supplied they will appear here.</p>
+  </section>
+
+  <section class="section" id="doctor-department-card" hidden>
+    <h2>About the Department</h2>
+    <div class="cards">
+      <div class="card">
+        <h3 id="department-card-name"></h3>
+        <p id="department-card-summary"></p>
+        <p><a id="department-card-link" href="#">View department →</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="doctor-missing" hidden>
+    <h2>Doctor not found</h2>
+    <p>We couldn't find that specialist. They may have been listed under a
+      different name, or the link may be out of date.</p>
+    <p><a href="doctors.html">← Back to all doctors</a></p>
+  </section>
+
+  <footer class="site-footer">
+    <p>&copy; 2026 Balasooriya Pvt Hospital. All rights reserved.</p>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/profile.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

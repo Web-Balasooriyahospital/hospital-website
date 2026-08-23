@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Request an appointment at Balasooriya Hospital, Puttalam. For emergencies call the ETU on 032-226-5200.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏥</text></svg>">
+  <title>Request an Appointment — Balasooriya Pvt Hospital</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="emergency-bar">
+    <span><strong>Open 24 hours, 365 days</strong></span>
+    <span>Emergency (ETU): <a href="tel:+94322265200">032-226-5200</a></span>
+    <span>Ambulance: <a href="tel:+94322266266">032-226-6266</a></span>
+  </div>
+
+  <header class="site-header">
+    <div class="logo"><img src="images/logo.jpg" alt="Balasooriya Hospital" class="logo-img"><span class="logo-text">Balasooriya Pvt Hospital</span></div>
+    <button type="button" class="nav-toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav">☰</button>
+    <nav id="site-nav">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="doctors.html">Doctors</a>
+      <a href="departments.html">Departments</a>
+      <a href="insurance.html">Insurance</a>
+      <a href="news.html">News</a>
+      <a href="careers.html">Careers</a>
+      <a href="booking.html">Booking</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <div class="page-banner">
+    <h1>Request an Appointment</h1>
+  </div>
+
+  <section class="section">
+    <p class="urgent-note">
+      <strong>This form is not for emergencies.</strong> If you need urgent
+      medical help, call the Emergency Treatment Unit on
+      <a href="tel:+94322265200">032-226-5200</a> or the ambulance line on
+      <a href="tel:+94322266266">032-226-6266</a>. Do not wait for a reply to
+      this form.
+    </p>
+
+    <p>Send us your details and our reception team will call you back to
+      confirm a time. You can also book directly by phone on
+      <a href="tel:+94322266266">032-226-6266</a>.</p>
+
+    <form class="contact-form" id="booking-form" novalidate>
+      <div>
+        <label for="patient-name">Full Name</label>
+        <input type="text" id="patient-name" name="patient-name" required autocomplete="name">
+      </div>
+      <div>
+        <label for="patient-phone">Phone Number</label>
+        <input type="tel" id="patient-phone" name="patient-phone" required autocomplete="tel"
+               inputmode="tel" placeholder="07X XXX XXXX">
+      </div>
+      <div>
+        <label for="patient-email">Email <span class="label-optional">(optional)</span></label>
+        <input type="email" id="patient-email" name="patient-email" autocomplete="email">
+      </div>
+      <div>
+        <label for="booking-department">Department</label>
+        <select id="booking-department" name="booking-department">
+          <option value="">No preference</option>
+        </select>
+      </div>
+      <div>
+        <label for="booking-doctor">Preferred Doctor <span class="label-optional">(optional)</span></label>
+        <select id="booking-doctor" name="booking-doctor">
+          <option value="">No preference</option>
+        </select>
+      </div>
+      <div>
+        <label for="booking-date">Preferred Date</label>
+        <input type="date" id="booking-date" name="booking-date" required>
+      </div>
+      <div>
+        <label for="booking-notes">Reason for Visit <span class="label-optional">(optional)</span></label>
+        <textarea id="booking-notes" name="booking-notes" rows="4"></textarea>
+      </div>
+      <button type="submit" class="cta">Send Request</button>
+      <p class="form-status" id="booking-status" role="status" aria-live="polite"></p>
+    </form>
+
+    <p class="form-note">Consultation hours are Monday–Friday 6:00–8:00 AM and
+      after 4:00 PM, and Saturday–Sunday 6:00 AM–8:00 PM, with a night on-call
+      service.</p>
+  </section>
+
+  <footer class="site-footer">
+    <p>&copy; 2026 Balasooriya Pvt Hospital. All rights reserved.</p>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/booking.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
