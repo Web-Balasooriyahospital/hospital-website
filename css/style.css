@@ -1,37 +1,77 @@
 :root {
+  /* Brand blue, kept as the identity but given proper light and dark steps
+     so surfaces can be tinted instead of everything using one flat colour. */
   --color-primary: #0b5ea8;
-  --color-primary-dark: #094a86;
-  --color-text: #1f2933;
-  --color-hero-bg: #e8f2fb;
-  --color-card-bg: #f8f9fa;
-  --color-card-border: #e1e4e8;
-  --color-input-border: #ccd1d5;
-  --color-footer-bg: #1f2933;
+  --color-primary-dark: #084a85;
+  --color-primary-soft: #e8f1fa;
+  --color-primary-softer: #f4f8fc;
+
+  /* Neutrals on a single cool-grey ramp so greys never clash. */
+  --color-text: #16202b;
+  --color-muted: #5a6875;
+  --color-border: #e3e8ee;
+  --color-surface: #ffffff;
+  --color-surface-alt: #f7f9fb;
+
+  --color-hero-bg: var(--color-primary-soft);
+  --color-card-bg: var(--color-surface);
+  --color-card-border: var(--color-border);
+  --color-input-border: #cfd6de;
+  --color-footer-bg: #16202b;
   --color-white: #fff;
   --color-emergency: #b3261e;
+
+  /* Rounder corners read as current; 4px reads as 2010s. */
+  --radius-sm: 8px;
+  --radius: 14px;
+  --radius-lg: 20px;
+  --radius-pill: 999px;
+
+  /* Layered shadows give depth without hard 1px borders everywhere. */
+  --shadow-sm: 0 1px 2px rgba(16, 32, 43, 0.04), 0 1px 3px rgba(16, 32, 43, 0.06);
+  --shadow-md: 0 4px 12px rgba(16, 32, 43, 0.07), 0 2px 4px rgba(16, 32, 43, 0.04);
+  --shadow-lg: 0 12px 28px rgba(16, 32, 43, 0.10), 0 4px 10px rgba(16, 32, 43, 0.05);
+
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: Arial, Helvetica, sans-serif;
 }
 
 body {
+  /* Inter if it loads, otherwise the platform UI face — both are far more
+     current than Arial, and the fallback needs no network. */
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
   color: var(--color-text);
-  line-height: 1.6;
+  background: var(--color-surface);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Headings: tighter leading and slight negative tracking, which is what
+   makes modern type look "set" rather than default. */
+h1, h2, h3, h4 {
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  font-weight: 700;
 }
 
 a {
   color: var(--color-primary);
+  text-underline-offset: 2px;
 }
 
 a:focus-visible,
 button:focus-visible,
 .cta:focus-visible {
-  outline: 2px solid var(--color-primary-dark);
+  outline: 2px solid var(--color-primary);
   outline-offset: 2px;
+  border-radius: 4px;
 }
 
 .site-header {
@@ -44,6 +84,7 @@ button:focus-visible,
   position: sticky;
   top: 0;
   z-index: 10;
+  box-shadow: var(--shadow-md);
 }
 
 .site-header .logo {
@@ -58,26 +99,38 @@ button:focus-visible,
   height: 68px;
   width: auto;
   background: var(--color-white);
-  border-radius: 4px;
+  border-radius: var(--radius-sm);
   padding: 3px 5px;
 }
 
 .about-photo,
 .gallery-photo {
   max-width: 100%;
-  border-radius: 6px;
+  border-radius: var(--radius);
   margin-top: 1rem;
 }
 
 .site-header nav a {
-  color: var(--color-white);
+  color: rgba(255, 255, 255, 0.88);
   text-decoration: none;
-  margin-left: 1.5rem;
+  margin-left: 0.35rem;
+  padding: 0.45rem 0.7rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.92rem;
+  font-weight: 500;
+  transition: background 0.2s var(--ease), color 0.2s var(--ease);
 }
 
-.site-header nav a.active,
+/* A soft pill rather than an underline — quieter and more current. */
 .site-header nav a:hover {
-  text-decoration: underline;
+  background: rgba(255, 255, 255, 0.14);
+  color: var(--color-white);
+}
+
+.site-header nav a.active {
+  background: rgba(255, 255, 255, 0.2);
+  color: var(--color-white);
+  font-weight: 600;
 }
 
 .site-header nav a:focus-visible {
@@ -99,48 +152,80 @@ button:focus-visible,
 
 .hero {
   background: var(--color-hero-bg);
-  padding: 4rem 2rem;
+  padding: 5.5rem 2rem;
   text-align: center;
 }
 
 .hero h1 {
-  font-size: 2.2rem;
+  /* Scales with the viewport instead of jumping at one breakpoint. */
+  font-size: clamp(2rem, 4.5vw, 3.25rem);
   margin-bottom: 1rem;
   color: var(--color-primary);
+  max-width: 20ch;
+  margin-inline: auto;
+}
+
+.hero p {
+  font-size: 1.1rem;
+  max-width: 60ch;
+  margin-inline: auto;
+  color: var(--color-muted);
 }
 
 .cta {
   margin-top: 1.5rem;
-  padding: 0.75rem 1.5rem;
+  padding: 0.85rem 1.75rem;
   background: var(--color-primary);
   color: var(--color-white);
   border: none;
-  border-radius: 4px;
+  border-radius: var(--radius-pill);
   cursor: pointer;
   font-size: 1rem;
-  transition: background 0.15s ease;
+  font-weight: 600;
+  font-family: inherit;
+  box-shadow: var(--shadow-sm);
+  transition: background 0.2s var(--ease), transform 0.2s var(--ease),
+    box-shadow 0.2s var(--ease);
 }
 
 .cta:hover {
   background: var(--color-primary-dark);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.cta:active {
+  transform: translateY(0);
 }
 
 .page-banner {
-  background: var(--color-primary);
+  /* A soft gradient rather than a flat slab of blue. */
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
   color: var(--color-white);
-  padding: 2.5rem 2rem;
+  padding: 3.25rem 2rem;
   text-align: center;
 }
 
+.page-banner h1 {
+  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+}
+
 .section {
-  padding: 3rem 2rem;
-  max-width: 1000px;
+  padding: 4rem 2rem;
+  max-width: 1080px;
   margin: 0 auto;
 }
 
 .section h2 {
-  color: var(--color-primary);
+  color: var(--color-text);
+  font-size: clamp(1.4rem, 2.5vw, 1.9rem);
   margin-bottom: 1rem;
+}
+
+/* Keeps prose at a readable measure instead of running the full width. */
+.section > p {
+  max-width: 68ch;
+  color: var(--color-muted);
 }
 
 .section ul {
@@ -153,27 +238,46 @@ button:focus-visible,
 
 .cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1.5rem;
-  margin-top: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.25rem;
+  margin-top: 1.75rem;
 }
 
 .card {
   background: var(--color-card-bg);
   border: 1px solid var(--color-card-border);
-  border-radius: 6px;
-  padding: 1.5rem;
-  transition: box-shadow 0.15s ease, transform 0.15s ease;
+  border-radius: var(--radius);
+  padding: 1.6rem;
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow 0.25s var(--ease), transform 0.25s var(--ease),
+    border-color 0.25s var(--ease);
 }
 
 .card:hover {
-  box-shadow: 0 4px 10px rgba(31, 41, 51, 0.08);
-  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-3px);
+  border-color: transparent;
 }
 
 .card h3 {
-  color: var(--color-primary);
+  color: var(--color-text);
+  font-size: 1.1rem;
   margin-bottom: 0.5rem;
+}
+
+.card p {
+  color: var(--color-muted);
+  font-size: 0.95rem;
+}
+
+.card a {
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-decoration: none;
+}
+
+.card a:hover {
+  text-decoration: underline;
 }
 
 .doctor-card {
@@ -181,17 +285,20 @@ button:focus-visible,
 }
 
 .doctor-photo {
-  width: 90px;
-  height: 90px;
+  width: 84px;
+  height: 84px;
   border-radius: 50%;
-  background: var(--color-primary);
+  /* Subtle gradient reads as a designed avatar rather than a flat disc. */
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
   color: var(--color-white);
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 auto 0.75rem;
-  font-size: 1.5rem;
-  font-weight: bold;
+  margin: 0 auto 0.9rem;
+  font-size: 1.35rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  box-shadow: var(--shadow-sm);
 }
 
 form.contact-form {
@@ -203,18 +310,31 @@ form.contact-form {
 }
 
 form.contact-form label {
-  font-weight: bold;
-  margin-bottom: 0.25rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-bottom: 0.35rem;
   display: block;
 }
 
 form.contact-form input,
 form.contact-form textarea {
   width: 100%;
-  padding: 0.6rem;
+  padding: 0.75rem 0.9rem;
   border: 1px solid var(--color-input-border);
-  border-radius: 4px;
+  border-radius: var(--radius-sm);
   font-size: 1rem;
+  font-family: inherit;
+  background: var(--color-surface);
+  transition: border-color 0.2s var(--ease), box-shadow 0.2s var(--ease);
+}
+
+/* A tinted ring on focus instead of the browser default outline. */
+form.contact-form input:focus,
+form.contact-form textarea:focus,
+form.contact-form select:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(11, 94, 168, 0.15);
 }
 
 .contact-details {
@@ -294,28 +414,51 @@ form.contact-form textarea {
 }
 
 .quick-link {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.15rem;
   text-align: center;
-  padding: 1.25rem 0.75rem;
-  background: var(--color-card-bg);
-  border: 1px solid var(--color-card-border);
-  border-radius: 6px;
+  padding: 1.5rem 0.75rem;
+  background: var(--color-surface-alt);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
   text-decoration: none;
-  color: var(--color-primary);
-  font-weight: bold;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  color: var(--color-text);
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease),
+    background 0.25s var(--ease);
 }
 
 .quick-link:hover,
 .quick-link:focus {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
+  background: var(--color-surface);
 }
 
+/* Icon sits in a tinted circle — reads as designed, unlike a bare glyph. */
 .quick-link .quick-icon {
-  display: block;
-  font-size: 1.75rem;
-  margin-bottom: 0.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  margin-bottom: 0.6rem;
+  border-radius: 50%;
+  background: var(--color-primary-soft);
+  color: var(--color-primary);
+}
+
+.quick-link .quick-icon svg {
+  width: 24px;
+  height: 24px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 /* ---- Section heading with a "view all" link on the right ---- */
@@ -348,7 +491,7 @@ form.contact-form textarea {
   text-align: center;
   padding: 1rem 0.75rem;
   background: var(--color-hero-bg);
-  border-radius: 6px;
+  border-radius: var(--radius);
 }
 
 .fact-value {
@@ -410,7 +553,7 @@ form.contact-form textarea {
   border-left: 4px solid var(--color-emergency);
   background: #fdecea;
   padding: 0.85rem 1rem;
-  border-radius: 4px;
+  border-radius: var(--radius-sm);
   margin-bottom: 1.25rem;
 }
 
@@ -420,19 +563,23 @@ form.contact-form textarea {
   color: #6b7280;
 }
 
+/* Matches the text inputs exactly — a select with a different radius sitting
+   directly beside them is the kind of mismatch that reads as unfinished. */
 form.contact-form select {
   width: 100%;
-  padding: 0.6rem;
+  padding: 0.75rem 0.9rem;
   border: 1px solid var(--color-input-border);
-  border-radius: 4px;
+  border-radius: var(--radius-sm);
   font-size: 1rem;
-  background: var(--color-white);
+  font-family: inherit;
+  background: var(--color-surface);
+  transition: border-color 0.2s var(--ease), box-shadow 0.2s var(--ease);
 }
 
 .form-status {
   margin-top: 0.5rem;
   padding: 0.75rem 1rem;
-  border-radius: 4px;
+  border-radius: var(--radius-sm);
   display: none;
 }
 
@@ -528,7 +675,7 @@ form.contact-form select {
   background: var(--color-white);
   color: var(--color-primary);
   border: none;
-  border-radius: 4px;
+  border-radius: var(--radius-pill);
   padding: 0.5rem 1rem;
   font-size: 0.9rem;
   font-weight: bold;
