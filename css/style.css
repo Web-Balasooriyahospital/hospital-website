@@ -812,3 +812,127 @@ form.contact-form select {
     grid-template-columns: repeat(2, 1fr);
   }
 }
+
+/* ============================================================
+   Motion
+   ============================================================
+   Two rules govern everything here:
+
+   1. Nothing that carries urgent information animates. The emergency bar
+      and the header are painted immediately - someone reaching this site
+      during an emergency must never wait on a transition.
+   2. Reveal states are scoped to .js-motion, which JavaScript puts on
+      <html>. With JS disabled or broken the class never lands, so content
+      stays visible rather than being permanently stuck at opacity 0.
+*/
+
+html {
+  scroll-behavior: smooth;
+}
+
+.js-motion .reveal {
+  opacity: 0;
+  transform: translateY(18px);
+}
+
+.js-motion .reveal.is-visible {
+  opacity: 1;
+  transform: none;
+  transition: opacity 0.55s var(--ease), transform 0.55s var(--ease);
+}
+
+/* Cards within a revealed group come in one after another. The delay is set
+   inline by JS as --i so any number of cards works. */
+.js-motion .reveal.is-visible .card,
+.js-motion .reveal.is-visible .quick-link,
+.js-motion .reveal.is-visible .fact {
+  animation: rise-in 0.5s var(--ease) both;
+  animation-delay: calc(var(--i, 0) * 60ms);
+}
+
+@keyframes rise-in {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* Hero content on first paint - runs immediately, no scroll needed. */
+.js-motion .hero h1 { animation: rise-in 0.6s var(--ease) both; }
+.js-motion .hero p  { animation: rise-in 0.6s var(--ease) 0.1s both; }
+.js-motion .hero-actions { animation: rise-in 0.6s var(--ease) 0.2s both; }
+
+/* Page banner title on inner pages. */
+.js-motion .page-banner h1 { animation: rise-in 0.5s var(--ease) both; }
+
+/* Mobile menu slides open instead of snapping. */
+@media (max-width: 700px) {
+  .site-header nav.is-open {
+    animation: menu-open 0.25s var(--ease) both;
+  }
+}
+
+@keyframes menu-open {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* Underline that grows from the left on section "view all" links. */
+.view-all {
+  position: relative;
+  text-decoration: none;
+}
+
+.view-all::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 1.5px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s var(--ease);
+}
+
+.view-all:hover::after,
+.view-all:focus-visible::after {
+  transform: scaleX(1);
+}
+
+/* Doctor avatar reacts when its card is hovered. */
+.card:hover .doctor-photo {
+  transform: scale(1.06);
+}
+
+.doctor-photo {
+  transition: transform 0.3s var(--ease);
+}
+
+/* ---- Respect a reduced-motion preference ----
+   Vestibular disorders make movement genuinely unpleasant, and this is a
+   hospital site. Anyone who has asked their system for less motion gets
+   none: content appears in place, fully visible. This block is last in the
+   file so it wins. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .js-motion .reveal,
+  .js-motion .reveal.is-visible {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .card:hover .doctor-photo {
+    transform: none;
+  }
+}

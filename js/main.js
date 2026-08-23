@@ -12,7 +12,70 @@ document.addEventListener('DOMContentLoaded', () => {
 
   initIntroVideo();
   initMobileNav();
+  initScrollReveal();
 });
+
+// Fades sections in as they scroll into view.
+//
+// The .js-motion class is what switches the reveal CSS on. It is added here
+// rather than sitting in the HTML so that if this script fails to load or
+// throws, the class never lands and every section stays visible — content
+// hidden by CSS that JS was supposed to reveal is a page nobody can read.
+//
+// Anyone who has asked their system for reduced motion is skipped entirely:
+// no class, no observer, everything simply visible.
+function initScrollReveal() {
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (prefersReduced || !('IntersectionObserver' in window)) return;
+
+  // The emergency bar and header are deliberately excluded — urgent contact
+  // details must never wait on an animation.
+  const targets = document.querySelectorAll('.section, .facts');
+  if (!targets.length) return;
+
+  document.documentElement.classList.add('js-motion');
+
+  targets.forEach((el) => el.classList.add('reveal'));
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+
+      reveal(entry.target);
+      observer.unobserve(entry.target);   // reveal once, not on every pass
+    });
+  }, {
+    // Trigger slightly before the element reaches the viewport edge so the
+    // motion finishes about when it is properly in view.
+    rootMargin: '0px 0px -10% 0px',
+    threshold: 0.05
+  });
+
+  targets.forEach((el) => observer.observe(el));
+
+  // Safety net. IntersectionObserver only runs while the page is actually
+  // rendering — in a background tab, a non-compositing embed, or a headless
+  // browser it may never fire, and requestAnimationFrame is paused by the
+  // same pipeline so it is no use as a backup. A plain timer is not, so if
+  // anything is still hidden shortly after load it is shown unconditionally.
+  //
+  // Worst case someone misses a fade. The alternative failure — a page of
+  // permanently invisible content — is not acceptable on a hospital site.
+  window.setTimeout(() => {
+    targets.forEach((el) => {
+      if (el.classList.contains('is-visible')) return;
+      reveal(el);
+      observer.unobserve(el);
+    });
+  }, 1200);
+}
+
+// Sets the stagger index on children, then marks the group visible.
+function reveal(el) {
+  el.querySelectorAll('.card, .quick-link, .fact')
+    .forEach((child, i) => child.style.setProperty('--i', i));
+  el.classList.add('is-visible');
+}
 
 // Mobile menu: the nav is collapsed behind a button under 700px so the
 // header doesn't take a quarter of a phone screen.
