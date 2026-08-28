@@ -24,3 +24,8 @@
   var STORAGE_KEY = 'preferredLang';
 
   var SINHALA = {
+    // --- emergency bar: highest-stakes strings on the site ---
+    'bar.open': 'දිනකට පැය 24, වසරකට දින 365 විවෘතව',
+    'bar.emergency': 'හදිසි ප්‍රතිකාර ඒකකය (ETU):',
+    'bar.ambulance': 'ගිලන් රථ:',
+
