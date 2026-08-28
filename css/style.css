@@ -895,6 +895,18 @@ html {
 
 .lang-btn:hover { background: var(--color-surface-alt); color: var(--color-text); }
 
+/* The active language is filled in, so which one you are reading is obvious
+   at a glance rather than something you have to infer from the page. */
+.lang-btn.is-active {
+  background: var(--color-primary);
+  color: var(--color-white);
+}
+
+.lang-btn:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
 /* Sinhala glyphs carry more vertical detail than Latin and become hard to
    read at the same size and line-height, so the whole page loosens slightly
    when Sinhala is active. The font stack is applied at :root rather than to
