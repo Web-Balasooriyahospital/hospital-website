@@ -78,7 +78,8 @@ button:focus-visible,
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.5rem 2rem;
+  gap: 1rem;
+  padding: 0.55rem 1.5rem;
   background: var(--color-primary);
   color: var(--color-white);
   position: sticky;
@@ -96,7 +97,7 @@ button:focus-visible,
 }
 
 .logo-img {
-  height: 68px;
+  height: 52px;
   width: auto;
   background: var(--color-white);
   border-radius: var(--radius-sm);
@@ -113,10 +114,10 @@ button:focus-visible,
 .site-header nav a {
   color: rgba(255, 255, 255, 0.88);
   text-decoration: none;
-  margin-left: 0.35rem;
-  padding: 0.45rem 0.7rem;
+  margin-left: 0.1rem;
+  padding: 0.42rem 0.58rem;
   border-radius: var(--radius-pill);
-  font-size: 0.92rem;
+  font-size: 0.875rem;
   font-weight: 500;
   transition: background 0.2s var(--ease), color 0.2s var(--ease);
 }
@@ -238,7 +239,7 @@ button:focus-visible,
 
 .cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(228px, 1fr));
   gap: 1.25rem;
   margin-top: 1.75rem;
 }
@@ -863,7 +864,38 @@ html {
 /* Page banner title on inner pages. */
 .js-motion .page-banner h1 { animation: rise-in 0.5s var(--ease) both; }
 
+/* ---------------------------------------------------------------------------
+   Bilingual support (English / Sinhala)
+   --------------------------------------------------------------------------- */
+
+/* Sinhala glyphs carry more vertical detail than Latin and become hard to
+   read at the same size and line-height, so the whole page loosens slightly
+   when Sinhala is active. The font stack is applied at :root rather than to
+   individual elements so nothing can be missed. */
+:root.lang-si body,
+:root.lang-si button,
+:root.lang-si input,
+:root.lang-si select,
+:root.lang-si textarea {
+  font-family: "Noto Sans Sinhala", "Iskoola Pota", "Inter", -apple-system,
+    BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+:root.lang-si body { line-height: 1.75; }
+
+:root.lang-si h1,
+:root.lang-si h2,
+:root.lang-si h3 { line-height: 1.45; }
+
 /* Mobile menu slides open instead of snapping. */
+@media (max-width: 700px) {
+  /* Language switch stays visible on phones - it sits outside the collapsed
+     nav, so a Sinhala reader never has to open the menu to find it. */
+  .lang-switch { margin-left: auto; }
+  .lang-btn { font-size: 0.72rem; padding: 0.28rem 0.5rem; }
+  .site-header .nav-toggle { margin-left: 0.5rem; }
+}
+
 @media (max-width: 700px) {
   .site-header nav.is-open {
     animation: menu-open 0.25s var(--ease) both;
