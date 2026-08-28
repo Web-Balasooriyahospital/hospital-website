@@ -126,3 +126,14 @@
     'link.viewDepartment': 'අංශය බලන්න →',
     'link.viewProfile': 'තොරතුරු බලන්න →',
 
+    // --- page banners ---
+    'page.services': 'අපගේ සේවාවන්',
+    'page.doctors': 'අපගේ වෛද්‍යවරු',
+    'page.departments': 'අංශ',
+    'page.about': 'අපි ගැන',
+    'page.contact': 'සම්බන්ධ වන්න',
+    'page.insurance': 'රක්ෂණය සහ බිල්පත්',
+    'page.news': 'පුවත් සහ සිදුවීම්',
+    'page.careers': 'රැකියා අවස්ථා',
+    'page.booking': 'දිනයක් වෙන් කරවා ගැනීම',
+
