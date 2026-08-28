@@ -868,6 +868,33 @@ html {
    Bilingual support (English / Sinhala)
    --------------------------------------------------------------------------- */
 
+/* Language switch: two named buttons, not a toggle, so the visitor picks the
+   language by name instead of guessing what one button would switch them to. */
+.lang-switch {
+  display: inline-flex;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  overflow: hidden;
+  background: var(--color-surface);
+}
+
+.lang-btn {
+  background: transparent;
+  border: 0;
+  color: var(--color-muted);
+  font: inherit;
+  font-size: 0.82rem;
+  font-weight: 600;
+  padding: 0.35rem 0.8rem;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.2s var(--ease), color 0.2s var(--ease);
+}
+
+.lang-btn + .lang-btn { border-left: 1px solid var(--color-border); }
+
+.lang-btn:hover { background: var(--color-surface-alt); color: var(--color-text); }
+
 /* Sinhala glyphs carry more vertical detail than Latin and become hard to
    read at the same size and line-height, so the whole page loosens slightly
    when Sinhala is active. The font stack is applied at :root rather than to
