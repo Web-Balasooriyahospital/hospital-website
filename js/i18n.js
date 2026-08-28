@@ -29,3 +29,15 @@
     'bar.emergency': 'හදිසි ප්‍රතිකාර ඒකකය (ETU):',
     'bar.ambulance': 'ගිලන් රථ:',
 
+    // --- navigation ---
+    'nav.home': 'මුල් පිටුව',
+    'nav.about': 'අපි ගැන',
+    'nav.services': 'සේවාවන්',
+    'nav.doctors': 'වෛද්‍යවරු',
+    'nav.departments': 'අංශ',
+    'nav.insurance': 'රක්ෂණය',
+    'nav.news': 'පුවත්',
+    'nav.careers': 'රැකියා අවස්ථා',
+    'nav.booking': 'වෙන් කරවා ගැනීම',
+    'nav.contact': 'සම්බන්ධ වන්න',
+
