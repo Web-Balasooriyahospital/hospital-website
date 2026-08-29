@@ -926,6 +926,10 @@ html {
 :root.lang-si h2,
 :root.lang-si h3 { line-height: 1.45; }
 
+/* Sinhala renders narrower per character; nudge headings down so a translated
+   hero title does not overflow on small screens. */
+:root.lang-si .hero h1 { font-size: clamp(1.5rem, 4vw, 2.4rem); }
+
 /* Mobile menu slides open instead of snapping. */
 @media (max-width: 700px) {
   /* Language switch stays visible on phones - it sits outside the collapsed
