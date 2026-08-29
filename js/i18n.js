@@ -156,3 +156,122 @@
     'directory.label': 'නම හෝ විශේෂත්වය අනුව සොයන්න',
     'directory.placeholder': 'උදා: හෘද රෝග විශේෂඥ',
 
+    // --- shared ---
+    'common.viewDepartment': 'අංශය බලන්න →',
+    'common.viewProfile': 'තොරතුරු බලන්න →',
+    'common.footer': '© 2026 බාලසූරිය පෞද්ගලික රෝහල. සියලු හිමිකම් ඇවිරිණි.',
+    'common.langToggle': 'English'
+  };
+
+  // Original English text, captured from the DOM on first switch.
+  var originals = new Map();
+
+  function originalFor(el, kind) {
+    var key = kind;
+    if (!originals.has(el)) originals.set(el, {});
+    var store = originals.get(el);
+    if (!(key in store)) {
+      store[key] = kind === 'text' ? el.textContent : el.getAttribute(kind);
+    }
+    return store[key];
+  }
+
+  function applyLanguage(lang) {
+    var toSinhala = lang === 'si';
+
+    document.querySelectorAll('[data-i18n]').forEach(function (el) {
+      var key = el.getAttribute('data-i18n');
+      var english = originalFor(el, 'text');
+      if (toSinhala && SINHALA[key]) {
+        el.textContent = SINHALA[key];
+      } else {
+        // No translation yet, or switching back — English is always the
+        // fallback. Never leave a raw key visible to a visitor.
+        el.textContent = english;
+      }
+    });
+
+    // Attributes: data-i18n-attr="placeholder:key,aria-label:otherKey"
+    document.querySelectorAll('[data-i18n-attr]').forEach(function (el) {
+      el.getAttribute('data-i18n-attr').split(',').forEach(function (pair) {
+        var parts = pair.split(':');
+        if (parts.length !== 2) return;
+        var attr = parts[0].trim();
+        var key = parts[1].trim();
+        var english = originalFor(el, attr);
+        if (toSinhala && SINHALA[key]) {
+          el.setAttribute(attr, SINHALA[key]);
+        } else if (english !== null) {
+          el.setAttribute(attr, english);
+        }
+      });
+    });
+
+    // Screen readers and hyphenation depend on this being right.
+    document.documentElement.setAttribute('lang', toSinhala ? 'si' : 'en');
+    document.documentElement.classList.toggle('lang-si', toSinhala);
+
+    // Two explicit buttons rather than one toggle: the visitor picks the
+    // language they want by name instead of working out what a single button
+    // would switch them to. aria-pressed tells a screen reader which one is
+    // currently active.
+    document.querySelectorAll('[data-lang]').forEach(function (b) {
+      var isActive = b.getAttribute('data-lang') === lang;
+      b.classList.toggle('is-active', isActive);
+      b.setAttribute('aria-pressed', String(isActive));
+    });
+
+    try {
+      localStorage.setItem(STORAGE_KEY, lang);
+    } catch (e) {
+      // Private browsing, or site data blocked. The choice simply will not
+      // survive the next page load; the current page is still translated.
+    }
+
+    // Pages that build their content from data.js (doctor and department
+    // profiles) cannot be translated by swapping textContent on existing
+    // elements, because their text was written by script after load. They
+    // listen for this and re-render instead.
+    document.dispatchEvent(new CustomEvent('languagechange', {
+      detail: { lang: lang }
+    }));
+  }
+
+  function storedLanguage() {
+    try {
+      return localStorage.getItem(STORAGE_KEY);
+    } catch (e) {
+      return null;
+    }
+  }
+
+  function init() {
+    var buttons = document.querySelectorAll('[data-lang]');
+    buttons.forEach(function (b) {
+      b.addEventListener('click', function () {
+        applyLanguage(b.getAttribute('data-lang'));
+      });
+    });
+
+    var stored = storedLanguage();
+    if (stored === 'si') {
+      applyLanguage('si');
+    } else {
+      // Nothing stored, or English: leave the served HTML alone so the first
+      // paint needs no JavaScript. Still mark which button is active.
+      buttons.forEach(function (b) {
+        var isActive = b.getAttribute('data-lang') === 'en';
+        b.classList.toggle('is-active', isActive);
+        b.setAttribute('aria-pressed', String(isActive));
+      });
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+
+  window.hospitalI18n = { apply: applyLanguage, strings: SINHALA };
+})();
