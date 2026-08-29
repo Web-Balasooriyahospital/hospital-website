@@ -137,3 +137,18 @@
     'page.careers': 'රැකියා අවස්ථා',
     'page.booking': 'දිනයක් වෙන් කරවා ගැනීම',
 
+    // --- booking form ---
+    'booking.notEmergency': 'මෙම පෝරමය හදිසි අවස්ථා සඳහා නොවේ.',
+    'booking.emergencyText': 'ඔබට හදිසි වෛද්‍ය සහාය අවශ්‍ය නම්, හදිසි ප්‍රතිකාර ඒකකයට හෝ ගිලන් රථ සේවයට කතා කරන්න. මෙම පෝරමයට පිළිතුරක් එනතුරු බලා නොසිටින්න.',
+    'booking.intro': 'ඔබේ විස්තර එවන්න. අපගේ පිළිගැනීමේ කාර්ය මණ්ඩලය වේලාවක් තහවුරු කිරීමට ඔබට නැවත කතා කරනු ඇත.',
+    'booking.name': 'සම්පූර්ණ නම',
+    'booking.phone': 'දුරකථන අංකය',
+    'booking.emailLabel': 'විද්‍යුත් තැපෑල',
+    'booking.optional': '(අත්‍යවශ්‍ය නොවේ)',
+    'booking.department': 'අංශය',
+    'booking.noPreference': 'කැමැත්තක් නැත',
+    'booking.doctor': 'කැමති වෛද්‍යවරයා',
+    'booking.date': 'කැමති දිනය',
+    'booking.reason': 'පැමිණීමේ හේතුව',
+    'booking.submit': 'ඉල්ලීම යවන්න',
+
