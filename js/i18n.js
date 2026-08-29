@@ -152,3 +152,7 @@
     'booking.reason': 'පැමිණීමේ හේතුව',
     'booking.submit': 'ඉල්ලීම යවන්න',
 
+    // --- doctor directory ---
+    'directory.label': 'නම හෝ විශේෂත්වය අනුව සොයන්න',
+    'directory.placeholder': 'උදා: හෘද රෝග විශේෂඥ',
+
