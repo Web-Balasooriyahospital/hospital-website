@@ -8,80 +8,85 @@
   <title>Services — Balasooriya Pvt Hospital</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Sinhala:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
   <div class="emergency-bar">
-    <span><strong>Open 24 hours, 365 days</strong></span>
-    <span>Emergency (ETU): <a href="tel:+94322265200">032-226-5200</a></span>
-    <span>Ambulance: <a href="tel:+94322266266">032-226-6266</a></span>
+    <span><strong data-i18n="bar.open">Open 24 hours, 365 days</strong></span>
+    <span><span data-i18n="bar.emergency">Emergency (ETU):</span> <a href="tel:+94322265200">032-226-5200</a></span>
+    <span><span data-i18n="bar.ambulance">Ambulance:</span> <a href="tel:+94322266266">032-226-6266</a></span>
   </div>
 
   <header class="site-header">
     <div class="logo"><img src="images/logo.jpg" alt="Balasooriya Hospital" class="logo-img"><span class="logo-text">Balasooriya Pvt Hospital</span></div>
+    <div class="lang-switch" role="group" aria-label="Language / භාෂාව">
+      <button type="button" class="lang-btn" data-lang="en" aria-pressed="true">English</button>
+      <button type="button" class="lang-btn" data-lang="si" aria-pressed="false">සිංහල</button>
+    </div>
     <button type="button" class="nav-toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav">☰</button>
     <nav id="site-nav">
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="services.html" class="active">Services</a>
-      <a href="doctors.html">Doctors</a>
-      <a href="departments.html">Departments</a>
-      <a href="insurance.html">Insurance</a>
-      <a href="news.html">News</a>
-      <a href="careers.html">Careers</a>
-      <a href="booking.html">Booking</a>
-      <a href="contact.html">Contact</a>
+      <a href="index.html" data-i18n="nav.home">Home</a>
+      <a href="about.html" data-i18n="nav.about">About</a>
+      <a href="services.html" class="active" data-i18n="nav.services">Services</a>
+      <a href="doctors.html" data-i18n="nav.doctors">Doctors</a>
+      <a href="departments.html" data-i18n="nav.departments">Departments</a>
+      <a href="insurance.html" data-i18n="nav.insurance">Insurance</a>
+      <a href="news.html" data-i18n="nav.news">News</a>
+      <a href="careers.html" data-i18n="nav.careers">Careers</a>
+      <a href="booking.html" data-i18n="nav.booking">Booking</a>
+      <a href="contact.html" data-i18n="nav.contact">Contact</a>
     </nav>
   </header>
 
   <div class="page-banner">
-    <h1>Our Services</h1>
+    <h1 data-i18n="page.services">Our Services</h1>
   </div>
 
   <section class="section">
     <div class="cards">
       <div class="card">
-        <h3>Emergency Treatment Unit</h3>
-        <p>24/7 emergency department staffed with experienced medical teams.</p>
+        <h3 data-i18n="svc.etu">Emergency Treatment Unit</h3>
+        <p data-i18n="svc.etuText">24/7 emergency department staffed with experienced medical teams.</p>
       </div>
       <div class="card">
-        <h3>Specialist Consultation</h3>
-        <p>28 consultant specialists across physician, surgical, and diagnostic care.</p>
+        <h3 data-i18n="svc.specialist">Specialist Consultation</h3>
+        <p data-i18n="svc.specialistText">28 consultant specialists across physician, surgical, and diagnostic care.</p>
       </div>
       <div class="card">
-        <h3>Laboratory</h3>
-        <p>On-site diagnostics, member of the Randox International Quality Assessment Scheme (UK).</p>
+        <h3 data-i18n="svc.lab">Laboratory</h3>
+        <p data-i18n="svc.labText">On-site diagnostics, member of the Randox International Quality Assessment Scheme (UK).</p>
       </div>
       <div class="card">
-        <h3>Pharmacy</h3>
-        <p>24-hour service with retail, wholesale, and OPD sections.</p>
+        <h3 data-i18n="svc.pharmacy">Pharmacy</h3>
+        <p data-i18n="svc.pharmacyText">24-hour service with retail, wholesale, and OPD sections.</p>
       </div>
       <div class="card">
-        <h3>Operation Theater</h3>
-        <p>Surgical procedures across general and specialist disciplines.</p>
+        <h3 data-i18n="svc.theatre">Operation Theater</h3>
+        <p data-i18n="svc.theatreText">Surgical procedures across general and specialist disciplines.</p>
       </div>
       <div class="card">
-        <h3>Physiotherapy &amp; Rehabilitation</h3>
-        <p>Recovery and rehabilitation care with a dedicated physiotherapist.</p>
+        <h3 data-i18n="svc.physio">Physiotherapy &amp; Rehabilitation</h3>
+        <p data-i18n="svc.physioText">Recovery and rehabilitation care with a dedicated physiotherapist.</p>
       </div>
       <div class="card">
-        <h3>Ultrasound Scanning (2D/3D/4D)</h3>
-        <p>Diagnostic imaging services on site.</p>
+        <h3 data-i18n="svc.ultrasound">Ultrasound Scanning (2D/3D/4D)</h3>
+        <p data-i18n="svc.ultrasoundText">Diagnostic imaging services on site.</p>
       </div>
       <div class="card">
-        <h3>Ambulance</h3>
-        <p>24/7 ambulance service — call 032-226-6266.</p>
+        <h3 data-i18n="svc.ambulance">Ambulance</h3>
+        <p data-i18n="svc.ambulanceText">24/7 ambulance service — call 032-226-6266.</p>
       </div>
     </div>
     <p style="margin-top:1.5rem;">See the full list of services and clinics on the
-      <a href="departments.html">Departments</a> page.</p>
+      <a href="departments.html" data-i18n="nav.departments">Departments</a> page.</p>
   </section>
 
   <footer class="site-footer">
-    <p>&copy; 2026 Balasooriya Pvt Hospital. All rights reserved.</p>
+    <p data-i18n="common.footer">&copy; 2026 Balasooriya Pvt Hospital. All rights reserved.</p>
   </footer>
 
+  <script src="js/i18n.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>
