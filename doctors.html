@@ -8,40 +8,51 @@
   <title>Doctors — Balasooriya Pvt Hospital</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Sinhala:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
   <div class="emergency-bar">
-    <span><strong>Open 24 hours, 365 days</strong></span>
-    <span>Emergency (ETU): <a href="tel:+94322265200">032-226-5200</a></span>
-    <span>Ambulance: <a href="tel:+94322266266">032-226-6266</a></span>
+    <span><strong data-i18n="bar.open">Open 24 hours, 365 days</strong></span>
+    <span><span data-i18n="bar.emergency">Emergency (ETU):</span> <a href="tel:+94322265200">032-226-5200</a></span>
+    <span><span data-i18n="bar.ambulance">Ambulance:</span> <a href="tel:+94322266266">032-226-6266</a></span>
   </div>
 
   <header class="site-header">
     <div class="logo"><img src="images/logo.jpg" alt="Balasooriya Hospital" class="logo-img"><span class="logo-text">Balasooriya Pvt Hospital</span></div>
+    <div class="lang-switch" role="group" aria-label="Language / භාෂාව">
+      <button type="button" class="lang-btn" data-lang="en" aria-pressed="true">English</button>
+      <button type="button" class="lang-btn" data-lang="si" aria-pressed="false">සිංහල</button>
+    </div>
     <button type="button" class="nav-toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav">☰</button>
     <nav id="site-nav">
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="services.html">Services</a>
-      <a href="doctors.html" class="active">Doctors</a>
-      <a href="departments.html">Departments</a>
-      <a href="insurance.html">Insurance</a>
-      <a href="news.html">News</a>
-      <a href="careers.html">Careers</a>
-      <a href="booking.html">Booking</a>
-      <a href="contact.html">Contact</a>
+      <a href="index.html" data-i18n="nav.home">Home</a>
+      <a href="about.html" data-i18n="nav.about">About</a>
+      <a href="services.html" data-i18n="nav.services">Services</a>
+      <a href="doctors.html" class="active" data-i18n="nav.doctors">Doctors</a>
+      <a href="departments.html" data-i18n="nav.departments">Departments</a>
+      <a href="insurance.html" data-i18n="nav.insurance">Insurance</a>
+      <a href="news.html" data-i18n="nav.news">News</a>
+      <a href="careers.html" data-i18n="nav.careers">Careers</a>
+      <a href="booking.html" data-i18n="nav.booking">Booking</a>
+      <a href="contact.html" data-i18n="nav.contact">Contact</a>
     </nav>
   </header>
 
   <div class="page-banner">
-    <h1>Our Doctors</h1>
+    <h1 data-i18n="page.doctors">Our Doctors</h1>
   </div>
 
-  <section class="section">
+  <section class="section" id="doctor-directory">
     <p><strong>Consultation hours:</strong> Monday–Friday 6:00 AM–8:00 AM and after
       4:00 PM; Saturday–Sunday 6:00 AM–8:00 PM. Night on-call service available.</p>
+
+    <div class="directory-search">
+      <label for="doctor-search" data-i18n="directory.label">Search by name or specialty</label>
+      <input type="search" id="doctor-search" autocomplete="off"
+             placeholder="e.g. cardiologist" data-i18n-attr="placeholder:directory.placeholder">
+      <p class="search-status" id="doctor-search-status" role="status" aria-live="polite"></p>
+    </div>
 
     <h2 style="margin-top:2rem;">Consultant Physicians</h2>
     <div class="cards">
@@ -100,9 +111,13 @@
   </section>
 
   <footer class="site-footer">
-    <p>&copy; 2026 Balasooriya Pvt Hospital. All rights reserved.</p>
+    <p data-i18n="common.footer">&copy; 2026 Balasooriya Pvt Hospital. All rights reserved.</p>
   </footer>
 
+  <script src="js/data.js"></script>
+  <script src="js/data-si.js"></script>
+  <script src="js/directory.js"></script>
+  <script src="js/i18n.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>
