@@ -60,3 +60,14 @@ const SPECIALTIES_SI = {
   'Surgeon': 'ශල්‍ය වෛද්‍ය'
 };
 
+// Look-ups that always return something printable. Callers never have to
+// decide what to do about a missing translation.
+function departmentNameFor(id, english) {
+  var si = DEPARTMENTS_SI[id];
+  return (document.documentElement.lang === 'si' && si) ? si : english;
+}
+
+function specialtyFor(english) {
+  var si = SPECIALTIES_SI[english];
+  return (document.documentElement.lang === 'si' && si) ? si : english;
+}
