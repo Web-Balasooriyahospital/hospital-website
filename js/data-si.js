@@ -35,3 +35,28 @@ const DEPARTMENTS_SI = {
   'nephrology': 'වකුගඩු රෝග අංශය'
 };
 
+const SPECIALTIES_SI = {
+  'Consultant Physician': 'උපදේශක වෛද්‍ය නිලධාරී',
+  'Consultant Cardiologist': 'උපදේශක හෘද රෝග විශේෂඥ',
+  'Consultant Chest Physician': 'උපදේශක පපුවේ රෝග විශේෂඥ',
+  'Consultant Dermatologist': 'උපදේශක සම රෝග විශේෂඥ',
+  'Consultant ENT Surgeon': 'උපදේශක කන් නාසය උගුර ශල්‍ය වෛද්‍ය',
+  'Consultant Eye Surgeon': 'උපදේශක අක්ෂි ශල්‍ය වෛද්‍ය',
+  'Consultant Hematologist & Orthopedic Surgeon': 'උපදේශක රුධිර රෝග හා අස්ථි ශල්‍ය වෛද්‍ය',
+  'Consultant Histopathologist': 'උපදේශක පටක රෝග විශේෂඥ',
+  'Consultant Nephrologist': 'උපදේශක වකුගඩු රෝග විශේෂඥ',
+  'Consultant OB/GYN': 'උපදේශක ප්‍රසූති හා නාරිවේද විශේෂඥ',
+  'Consultant Pediatric Cardiologist': 'උපදේශක ළමා හෘද රෝග විශේෂඥ',
+  'Consultant Pediatrician': 'උපදේශක ළමා රෝග විශේෂඥ',
+  'Consultant Psychiatrist': 'උපදේශක මනෝ වෛද්‍ය',
+  'Consultant Psychotherapist & Psychologist': 'උපදේශක මනෝ චිකිත්සක හා මනෝ විද්‍යාඥ',
+  'Consultant Radiologist': 'උපදේශක විකිරණ විද්‍යා විශේෂඥ',
+  'Consultant Respiratory Physician': 'උපදේශක ශ්වසන රෝග විශේෂඥ',
+  'Consultant STD': 'උපදේශක ලිංගාශ්‍රිත රෝග විශේෂඥ',
+  'Dental Surgeon': 'දන්ත ශල්‍ය වෛද්‍ය',
+  'Dietitian': 'පෝෂණවේදී',
+  'Physiotherapist': 'භෞත චිකිත්සක',
+  'Speech Therapist': 'කථන චිකිත්සක',
+  'Surgeon': 'ශල්‍ය වෛද්‍ය'
+};
+
