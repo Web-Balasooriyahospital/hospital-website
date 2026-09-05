@@ -6,11 +6,24 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
+  render();
+
+  // This page's text is written by script, so the textContent swap that
+  // translates the rest of the site cannot reach it. Rebuild instead.
+  document.addEventListener('languagechange', render);
+});
+
+function render() {
   const id = new URLSearchParams(window.location.search).get('id');
+
+  // Clear any list built by a previous pass, or switching language twice
+  // would append the doctors again under the department.
+  const list = document.getElementById('department-doctors');
+  if (list) list.textContent = '';
 
   if (document.getElementById('doctor-profile')) renderDoctor(id);
   if (document.getElementById('department-profile')) renderDepartment(id);
-});
+}
 
 function show(el) {
   if (el) el.hidden = false;
@@ -27,21 +40,22 @@ function renderDoctor(id) {
   document.title = `${doctor.name} — Balasooriya Pvt Hospital`;
   document.getElementById('doctor-name').textContent = doctor.name;
   document.getElementById('doctor-heading').textContent = doctor.name;
-  document.getElementById('doctor-specialty').textContent = doctor.specialty;
+  document.getElementById('doctor-specialty').textContent = specialtyFor(doctor.specialty);
   document.getElementById('doctor-initials').textContent = initialsFor(doctor);
   document.getElementById('doctor-hours').textContent = CONSULTATION_HOURS;
 
   const dept = departmentById(doctor.department);
   const deptLink = document.getElementById('doctor-department-link');
   if (dept) {
-    deptLink.textContent = dept.name;
+    deptLink.textContent = departmentNameFor(dept.id, dept.name);
     deptLink.href = `department.html?id=${encodeURIComponent(dept.id)}`;
 
-    document.getElementById('department-card-name').textContent = dept.name;
+    document.getElementById('department-card-name').textContent =
+      departmentNameFor(dept.id, dept.name);
     document.getElementById('department-card-summary').textContent = dept.summary;
     const cardLink = document.getElementById('department-card-link');
     cardLink.href = `department.html?id=${encodeURIComponent(dept.id)}`;
-    cardLink.textContent = `View ${dept.name} →`;
+    cardLink.textContent = `View ${departmentNameFor(dept.id, dept.name)} →`;
     show(document.getElementById('doctor-department-card'));
   } else {
     // Data problem rather than a bad URL — degrade quietly instead of
@@ -62,7 +76,8 @@ function renderDepartment(id) {
   }
 
   document.title = `${dept.name} — Balasooriya Pvt Hospital`;
-  document.getElementById('department-name').textContent = dept.name;
+  document.getElementById('department-name').textContent =
+    departmentNameFor(dept.id, dept.name);
   document.getElementById('department-description').textContent = dept.description;
 
   if (dept.urgent) show(document.getElementById('department-urgent'));
@@ -83,7 +98,7 @@ function renderDepartment(id) {
       name.textContent = doc.name;
 
       const specialty = document.createElement('p');
-      specialty.textContent = doc.specialty;
+      specialty.textContent = specialtyFor(doc.specialty);
 
       const link = document.createElement('a');
       link.href = `doctor.html?id=${encodeURIComponent(doc.id)}`;
@@ -96,5 +111,24 @@ function renderDepartment(id) {
   }
 
   show(document.getElementById('department-profile'));
+  // Direct line, where the hospital publishes one for that department. Only
+  // three do, so the element stays hidden rather than showing an empty label
+  // for the other seventeen.
+  const lineEl = document.getElementById('department-direct-line');
+  if (lineEl) {
+    if (dept.directLine) {
+      lineEl.textContent = '';
+      const label = document.createElement('strong');
+      label.textContent = 'Direct line: ';
+      const a = document.createElement('a');
+      a.href = 'tel:' + dept.directLine.tel;
+      a.textContent = dept.directLine.display;
+      lineEl.append(label, a);
+      lineEl.hidden = false;
+    } else {
+      lineEl.hidden = true;
+    }
+  }
+
   show(document.getElementById('department-location'));
 }
