@@ -864,6 +864,40 @@ html {
 /* Page banner title on inner pages. */
 .js-motion .page-banner h1 { animation: rise-in 0.5s var(--ease) both; }
 
+/* Doctor directory search. */
+.directory-search { margin: 1.5rem 0 0.5rem; }
+
+.directory-search label {
+  display: block;
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-bottom: 0.4rem;
+  color: var(--color-text);
+}
+
+.directory-search input[type="search"] {
+  width: 100%;
+  max-width: 28rem;
+  padding: 0.65rem 0.85rem;
+  border: 1px solid var(--color-input-border);
+  border-radius: var(--radius-sm);
+  font: inherit;
+  background: var(--color-surface);
+}
+
+.directory-search input[type="search"]:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 1px;
+  border-color: var(--color-primary);
+}
+
+.search-status {
+  margin: 0.5rem 0 0;
+  font-size: 0.9rem;
+  color: var(--color-muted);
+  min-height: 1.2em;   /* reserve the line so results do not jump the page */
+}
+
 /* ---------------------------------------------------------------------------
    Bilingual support (English / Sinhala)
    --------------------------------------------------------------------------- */
