@@ -39,4 +39,13 @@
     });
   }
 
+  function matches(card, q) {
+    if (!q) return true;
+    var english = englishSpecialty.get(card) || '';
+    var shown = specialtyEl(card) ? specialtyEl(card).textContent : '';
+    // Search English and the currently displayed text, so a Sinhala reader
+    // can type either script and still find someone.
+    return (nameOf(card) + ' ' + english + ' ' + shown).toLowerCase().indexOf(q) !== -1;
+  }
+
   
