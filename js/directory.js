@@ -48,4 +48,36 @@
     return (nameOf(card) + ' ' + english + ' ' + shown).toLowerCase().indexOf(q) !== -1;
   }
 
+  function filter() {
+    var q = input.value.trim().toLowerCase();
+    var shown = 0;
+
+    cards.forEach(function (card) {
+      var hit = matches(card, q);
+      card.hidden = !hit;
+      if (hit) shown++;
+    });
+
+    // Hide a specialty heading once every doctor under it is filtered out,
+    // otherwise the page is a column of empty headings.
+    groups.forEach(function (g) {
+      var any = g.cards.some(function (c) { return !c.hidden; });
+      if (g.heading) g.heading.hidden = !any;
+      g.wrap.hidden = !any;
+    });
+
+    var si = document.documentElement.lang === 'si';
+    if (shown === 0) {
+      status.textContent = si
+        ? 'ගැලපෙන වෛද්‍යවරයෙක් හමු නොවීය. වෙනත් නමක් හෝ විශේෂත්වයක් උත්සාහ කරන්න.'
+        : 'No doctors match that search. Try another name or specialty.';
+    } else if (q) {
+      status.textContent = si
+        ? ('වෛද්‍යවරු ' + shown + ' දෙනෙක් හමු විය')
+        : (shown + (shown === 1 ? ' doctor found' : ' doctors found'));
+    } else {
+      status.textContent = '';
+    }
+  }
+
   
