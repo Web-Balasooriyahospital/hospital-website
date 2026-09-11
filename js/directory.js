@@ -80,4 +80,41 @@
     }
   }
 
-  
+  function init() {
+    var section = document.getElementById('doctor-directory');
+    if (!section) return;
+
+    cards = Array.prototype.slice.call(section.querySelectorAll('.doctor-card'));
+    if (!cards.length) return;
+
+    // Pair each specialty heading with the card grid that follows it.
+    groups = Array.prototype.slice.call(section.querySelectorAll('.cards'))
+      .map(function (wrap) {
+        var heading = wrap.previousElementSibling;
+        if (heading && heading.tagName !== 'H2') heading = null;
+        return {
+          wrap: wrap,
+          heading: heading,
+          cards: Array.prototype.slice.call(wrap.querySelectorAll('.doctor-card'))
+        };
+      });
+
+    input = document.getElementById('doctor-search');
+    status = document.getElementById('doctor-search-status');
+    if (!input || !status) return;
+
+    translateSpecialties();
+
+    input.addEventListener('input', filter);
+    document.addEventListener('languagechange', function () {
+      translateSpecialties();
+      filter();          // re-run so the result count is in the new language
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
