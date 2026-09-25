@@ -899,6 +899,42 @@ html {
 }
 
 /* ---------------------------------------------------------------------------
+   Visual pass
+   --------------------------------------------------------------------------- */
+
+/* Header: the wordmark holds one line and the language switch sits at the
+   far right, past the navigation, where a language control is normally
+   looked for. Only from the tablet breakpoint up - on a phone the source
+   order (logo, language, menu button) is already what we want. */
+@media (min-width: 701px) {
+  .site-header nav { order: 2; }
+  .lang-switch { order: 3; margin-left: 0.25rem; }
+
+  /* The navigation was wrapping onto a second row even though the header had
+     room for it: as a flex item it shrank below its own content width, and
+     the links wrapped inside the squeezed box. Stop it shrinking, and let the
+     wordmark give up space instead - it is the one part of the header that
+     can afford to. */
+  .site-header nav {
+    flex: 0 0 auto;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+  }
+
+  .lang-switch { flex: 0 0 auto; }
+
+  .logo {
+    flex: 0 1 auto;
+    min-width: 0;
+  }
+
+  .logo-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+/* ---------------------------------------------------------------------------
    Bilingual support (English / Sinhala)
    --------------------------------------------------------------------------- */
 
