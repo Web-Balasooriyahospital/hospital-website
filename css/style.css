@@ -943,6 +943,21 @@ html {
   .logo-text { display: none; }
 }
 
+/* Sinhala navigation labels run about 190px wider than their English
+   equivalents, so the wordmark needs a correspondingly wider window before
+   it fits. Measured: the full wordmark needs 1408px in Sinhala against
+   1280px in English. Without this it truncated to "Balas..." on a 1366px
+   laptop - the most common screen the hospital actually uses. */
+@media (min-width: 701px) and (max-width: 1409px) {
+  :root.lang-si .logo-text { display: none; }
+}
+
+.logo-text {
+  white-space: nowrap;
+  font-size: 1.05rem;
+  letter-spacing: -0.01em;
+}
+
 /* ---------------------------------------------------------------------------
    Bilingual support (English / Sinhala)
    --------------------------------------------------------------------------- */
