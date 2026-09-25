@@ -995,6 +995,27 @@ html {
   font-size: 1.05rem;
 }
 
+/* Section headings get a short rule beneath them so each block reads as its
+   own section rather than the page being one long column of text. */
+.section > h2,
+.section-head h2 {
+  position: relative;
+  padding-bottom: 0.6rem;
+  letter-spacing: -0.02em;
+}
+
+.section > h2::after,
+.section-head h2::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 2.5rem;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--color-primary);
+}
+
 /* ---------------------------------------------------------------------------
    Bilingual support (English / Sinhala)
    --------------------------------------------------------------------------- */
