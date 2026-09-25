@@ -934,6 +934,15 @@ html {
   }
 }
 
+/* Between the phone breakpoint and a wide desktop there is not enough room
+   for ten navigation items and the wordmark at once. The logo image already
+   carries the hospital name, so the text is what goes - shown only where it
+   fits in full, since a wordmark truncated to "Balasooriy..." looks worse
+   than no wordmark at all. */
+@media (min-width: 701px) and (max-width: 1279px) {
+  .logo-text { display: none; }
+}
+
 /* ---------------------------------------------------------------------------
    Bilingual support (English / Sinhala)
    --------------------------------------------------------------------------- */
