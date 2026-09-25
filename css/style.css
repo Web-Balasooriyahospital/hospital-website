@@ -958,6 +958,43 @@ html {
   letter-spacing: -0.01em;
 }
 
+/* Hero: the background photograph is a busy awards-ceremony shot, and the
+   flat 55% wash over it left the supporting line barely legible. A vertical
+   scrim darkens the middle band where the text actually sits, while leaving
+   the edges of the photograph visible. */
+.hero { position: relative; overflow: hidden; }
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(8, 40, 72, 0.25) 0%,
+    rgba(8, 40, 72, 0.62) 45%,
+    rgba(8, 40, 72, 0.72) 70%,
+    rgba(8, 40, 72, 0.45) 100%
+  );
+  pointer-events: none;
+}
+
+.hero > * { position: relative; z-index: 1; }
+
+.hero h1 {
+  text-shadow: 0 2px 14px rgba(6, 28, 50, 0.55);
+  letter-spacing: -0.02em;
+  max-width: 20ch;
+  margin-inline: auto;
+}
+
+.hero p {
+  color: rgba(255, 255, 255, 0.94);
+  text-shadow: 0 1px 8px rgba(6, 28, 50, 0.6);
+  max-width: 54ch;
+  margin-inline: auto;
+  font-size: 1.05rem;
+}
+
 /* ---------------------------------------------------------------------------
    Bilingual support (English / Sinhala)
    --------------------------------------------------------------------------- */
