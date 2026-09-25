@@ -1028,6 +1028,20 @@ html {
   border-color: var(--color-primary-soft);
 }
 
+/* Quick links: square-ish tiles with the icon given room, so the row reads as
+   a set of destinations rather than a line of buttons. */
+.quick-link {
+  padding: 1.35rem 0.85rem;
+  border-radius: var(--radius);
+  transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease),
+              background 0.25s var(--ease);
+}
+
+.quick-link:hover {
+  transform: translateY(-3px);
+  background: var(--color-primary-softer);
+}
+
 /* ---------------------------------------------------------------------------
    Bilingual support (English / Sinhala)
    --------------------------------------------------------------------------- */
