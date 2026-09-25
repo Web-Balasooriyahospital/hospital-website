@@ -24,6 +24,7 @@ const DEPARTMENTS = [
   {
     id: 'emergency',
     name: 'Emergency Treatment Unit',
+    directLine: { display: '032-226-5200', tel: '+94322265200' },
     summary: '24/7 emergency care team.',
     description:
       'The Emergency Treatment Unit (ETU) is staffed around the clock, every day ' +
@@ -63,6 +64,7 @@ const DEPARTMENTS = [
   {
     id: 'laboratory',
     name: 'Laboratory',
+    directLine: { display: '032-329-4165', tel: '+94323294165' },
     summary: 'On-site diagnostics.',
     description:
       'On-site diagnostic laboratory and a member of the Randox International ' +
@@ -73,6 +75,7 @@ const DEPARTMENTS = [
   {
     id: 'pharmacy',
     name: 'Pharmacy',
+    directLine: { display: '032-329-4162', tel: '+94323294162' },
     summary: '24-hour retail, wholesale, and OPD pharmacy.',
     description:
       'Open 24 hours with retail, wholesale and outpatient sections. Direct ' +
