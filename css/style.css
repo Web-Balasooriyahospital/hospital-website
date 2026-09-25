@@ -1042,6 +1042,18 @@ html {
   background: var(--color-primary-softer);
 }
 
+/* Consultant initials: a softer, lighter disc. Twenty-eight identical
+   saturated blue circles down the page were the loudest thing on it. */
+.doctor-photo {
+  background: linear-gradient(145deg, var(--color-primary-soft) 0%, #d3e4f5 100%);
+  color: var(--color-primary-dark);
+  border: 1px solid rgba(11, 94, 168, 0.16);
+  box-shadow: none;
+  width: 72px;
+  height: 72px;
+  font-size: 1.15rem;
+}
+
 /* ---------------------------------------------------------------------------
    Bilingual support (English / Sinhala)
    --------------------------------------------------------------------------- */
