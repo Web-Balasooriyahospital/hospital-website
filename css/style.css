@@ -1054,6 +1054,9 @@ html {
   font-size: 1.15rem;
 }
 
+/* Facts strip: numbers carry the weight, labels recede. */
+.fact-value { letter-spacing: -0.02em; }
+
 /* ---------------------------------------------------------------------------
    Bilingual support (English / Sinhala)
    --------------------------------------------------------------------------- */
